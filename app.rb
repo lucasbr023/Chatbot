@@ -5,6 +5,7 @@ require 'sinatra/activerecord'
 require './config/database'
 
 Dir["./app/models/*.rb"].each {|file| require file }
+Dir["./app/services/**/*.rb"].each {|file| require file }
 
 class App < Sinatra::Base
   get '/sinatra' do
@@ -18,7 +19,6 @@ class App < Sinatra::Base
     else
       response = InterpretService.call(result["action"], result["parameters"])
     end
-
     content_type :json
     {
       "speech": response,
@@ -26,5 +26,4 @@ class App < Sinatra::Base
       "source": "Chatbot"
     }.to_json
   end
-
 end
