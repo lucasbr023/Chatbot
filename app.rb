@@ -12,9 +12,9 @@ class App < Sinatra::Base
   end
 
   post '/webhook' do
-    result = Json.parse(request.body.read)["result"]
+    result = JSON.parse(request.body.read)["result"]
     if result["contexts"].present?
-      response = InterpretService.call(result["action"], result["contexts"[0]["parameters"]])
+      response = InterpretService.call(result["action"], result["contexts"][0]["parameters"])
     else
       response = InterpretService.call(result["action"], result["parameters"])
     end
@@ -23,7 +23,7 @@ class App < Sinatra::Base
     {
       "speech": response,
       "displayText": response,
-      "source": "Slack"
+      "source": "Chatbot"
     }.to_json
   end
 
