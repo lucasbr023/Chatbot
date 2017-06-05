@@ -1,7 +1,6 @@
 module FaqModule
   class CreateService
     def initialize(params)
-      # TODO: identify origin and set company
       @company = Company.last
       @question = params["question-original"]
       @answer = params["answer-original"]
