@@ -1,3 +1,4 @@
+require 'byebug'
 module FaqModule
   class CreateService
     def initialize(params)
@@ -5,11 +6,11 @@ module FaqModule
       @question = params["question-original"]
       @answer = params["answer-original"]
       @hashtags = params["hashtags-original"]
+      @link = params["link-original"]
     end
-
-
+    
     def call
-      if @hashtags == nil || @hashtags == ""
+       if @hashtags == nil || @hashtags == ""
          return "Hashtag Obrigatória"
        end
 

@@ -4,6 +4,7 @@ class CreateFaqs < ActiveRecord::Migration[5.1]
       t.string :question
       t.string :answer
       t.integer :company_id
+      t.integer :link_id
     end
   end
 end
