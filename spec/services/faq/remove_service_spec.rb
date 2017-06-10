@@ -1,4 +1,4 @@
-require_relative './../../spec_helper.rb'
+9require_relative './../../spec_helper.rb'
 
 describe FaqModule::RemoveService do
   before do
@@ -8,7 +8,7 @@ describe FaqModule::RemoveService do
   describe '#call' do
     it "With valid ID, remove Faq" do
       faq = create(:faq, company: @company)
-      @removeService = FaqModule::RemoveService.new({"id" => faq.id})
+      @removeService = FaqModule::RemoveLinkService.new({"id" => faq.id})
       response = @removeService.call()
 
       expect(response).to match("Deletado com sucesso")

@@ -12,6 +12,12 @@ class InterpretService
    when "add_link"
      FaqModule::AddLinkService.new(params).addLink()
    else
+   when "remove_link"
+     FaqModule::RemoveLinkService.new(params).call()
+   else
+   when "list_link"
+     FaqModule::ListLinkService.new(params).listLinksFromFaq()
+   else
      "Não compreendi o seu desejo"
    end
  end
